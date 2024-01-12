@@ -20,7 +20,8 @@ function App() {
   return (
     <div>
       <h1>Tasks</h1>
-      <input type="text" />
+      <label htmlFor="task-input">Add Task: </label>
+      <input id="task-input" type="text" />
       <button>Add</button>
       <ul>
         {tasks.map((task) => (
