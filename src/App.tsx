@@ -32,7 +32,7 @@ function App() {
       />
       <button
         onClick={() => {
-          console.log('Add');
+          console.log(taskName);
         }}
       >
         Add
