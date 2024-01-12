@@ -22,7 +22,13 @@ function App() {
       <h1>Tasks</h1>
       <label htmlFor="task-input">Add Task: </label>
       <input id="task-input" type="text" />
-      <button>Add</button>
+      <button
+        onClick={() => {
+          console.log('Add');
+        }}
+      >
+        Add
+      </button>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>{task.title}</li>
