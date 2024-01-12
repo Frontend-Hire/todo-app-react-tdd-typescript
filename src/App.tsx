@@ -20,6 +20,8 @@ function App() {
   return (
     <div>
       <h1>Tasks</h1>
+      <input type="text" />
+      <button>Add</button>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>{task.title}</li>
