@@ -21,6 +21,17 @@ function App() {
 
   const [taskName, setTaskName] = React.useState('');
 
+  const onAddTask = () => {
+    setTasks([
+      ...tasks,
+      {
+        id: new Date().getTime(), // Not a great way to generate IDs
+        title: taskName,
+        isCompleted: false,
+      },
+    ]);
+  };
+
   return (
     <div>
       <h1>Tasks</h1>
@@ -30,20 +41,7 @@ function App() {
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setTasks([
-            ...tasks,
-            {
-              id: new Date().getTime(), // Not a great way to generate IDs
-              title: taskName,
-              isCompleted: false,
-            },
-          ]);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={onAddTask}>Add</button>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>{task.title}</li>
