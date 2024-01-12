@@ -1,3 +1,5 @@
+import React from 'react';
+
 type Priority = 'p1' | 'p2' | 'p3';
 
 type Task = {
@@ -17,11 +19,17 @@ function App() {
     },
   ];
 
+  const [taskName, setTaskName] = React.useState('');
+
   return (
     <div>
       <h1>Tasks</h1>
       <label htmlFor="task-input">Add Task: </label>
-      <input id="task-input" type="text" />
+      <input
+        id="task-input"
+        value={taskName}
+        onChange={(e) => setTaskName(e.target.value)}
+      />
       <button
         onClick={() => {
           console.log('Add');
