@@ -10,14 +10,14 @@ type Task = {
 };
 
 function App() {
-  const tasks: Task[] = [
+  const [tasks, setTasks] = React.useState<Task[]>([
     {
       id: 1,
       title: 'Learn React',
       isCompleted: true,
       priority: 'p1',
     },
-  ];
+  ]);
 
   const [taskName, setTaskName] = React.useState('');
 
@@ -32,7 +32,14 @@ function App() {
       />
       <button
         onClick={() => {
-          console.log(taskName);
+          setTasks([
+            ...tasks,
+            {
+              id: new Date().getTime(), // Not a great way to generate IDs
+              title: taskName,
+              isCompleted: false,
+            },
+          ]);
         }}
       >
         Add
