@@ -37,6 +37,7 @@ function App() {
       <h1>Tasks</h1>
       <label htmlFor="task-input">Add Task: </label>
       <input
+        readOnly
         id="task-input"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
