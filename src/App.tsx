@@ -33,6 +33,12 @@ function App() {
     setTaskName('');
   };
 
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onAddTask();
+    }
+  };
+
   return (
     <div>
       <h1>Tasks</h1>
@@ -41,6 +47,7 @@ function App() {
         id="task-input"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
+        onKeyDown={onInputKeyDown}
       />
       <button onClick={onAddTask}>Add</button>
       <ul>

@@ -59,5 +59,16 @@ describe('App', () => {
     });
   });
 
-  test.todo('should add a task by pressing the enter key', () => {});
+  test('should add a task by pressing the enter key', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+
+    await user.type(input, 'New Task{enter}');
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole('listitem')).toHaveLength(1);
+    });
+  });
 });
