@@ -44,7 +44,20 @@ describe('App', () => {
     });
   });
 
-  test.todo('should not add an empty task', () => {});
+  test('should not add an empty task', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+    const button = screen.getByRole('button', { name: 'Add' });
+
+    await user.type(input, '   '); // Makes sense to also test with spaces
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole('listitem')).toHaveLength(0);
+    });
+  });
 
   test.todo('should add a task by pressing the enter key', () => {});
 });
