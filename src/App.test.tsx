@@ -28,4 +28,23 @@ describe('App', () => {
       expect(screen.getByText('New Task')).toBeInTheDocument();
     });
   });
+
+  test('should clear the input field after adding a task', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+    const button = screen.getByRole('button', { name: 'Add' });
+
+    await user.type(input, 'New Task');
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(input).toHaveValue('');
+    });
+  });
+
+  test.todo('should not add an empty task', () => {});
+
+  test.todo('should add a task by pressing the enter key', () => {});
 });
