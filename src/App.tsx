@@ -30,6 +30,8 @@ function App() {
         isCompleted: false,
       },
     ]);
+
+    setTaskName('');
   };
 
   return (
