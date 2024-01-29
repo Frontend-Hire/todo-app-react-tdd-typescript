@@ -1,5 +1,6 @@
 import React from 'react';
 import { Task } from './types';
+import TaskInput from './TaskInput';
 
 function App() {
   const [tasks, setTasks] = React.useState<Task[]>([]);
@@ -34,14 +35,12 @@ function App() {
   return (
     <div>
       <h1>Tasks</h1>
-      <label htmlFor="task-input">Add Task: </label>
-      <input
-        id="task-input"
-        value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
-        onKeyDown={onInputKeyDown}
+      <TaskInput
+        taskName={taskName}
+        setTaskName={setTaskName}
+        onInputKeyDown={onInputKeyDown}
+        onAddTask={onAddTask}
       />
-      <button onClick={onAddTask}>Add</button>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>{task.title}</li>
