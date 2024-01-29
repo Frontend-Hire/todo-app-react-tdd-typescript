@@ -7,9 +7,20 @@ type AddTaskProps = {
 export default function AddTask({ onAddTask }: AddTaskProps) {
   const [taskName, setTaskName] = React.useState('');
 
+  const handleAddTask = () => {
+    const trimmedTaskName = taskName.trim();
+
+    if (!trimmedTaskName) {
+      return;
+    }
+
+    onAddTask(trimmedTaskName);
+    setTaskName('');
+  };
+
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      onAddTask(taskName);
+      handleAddTask();
     }
   };
 
@@ -22,7 +33,7 @@ export default function AddTask({ onAddTask }: AddTaskProps) {
         onChange={(e) => setTaskName(e.target.value)}
         onKeyDown={onInputKeyDown}
       />
-      <button onClick={() => onAddTask(taskName)}>Add</button>
+      <button onClick={handleAddTask}>Add</button>
     </>
   );
 }
