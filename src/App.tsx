@@ -1,13 +1,5 @@
 import React from 'react';
-
-type Priority = 'p1' | 'p2' | 'p3';
-
-type Task = {
-  id: number;
-  title: string;
-  isCompleted: boolean;
-  priority?: Priority;
-};
+import { Task } from './types';
 
 function App() {
   const [tasks, setTasks] = React.useState<Task[]>([]);
