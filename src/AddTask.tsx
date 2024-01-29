@@ -1,16 +1,20 @@
-type TaskInputProps = {
+type AddTaskProps = {
   taskName: string;
   setTaskName: (taskName: string) => void;
-  onInputKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onAddTask: () => void;
 };
 
-export default function TaskInput({
+export default function AddTask({
   taskName,
   setTaskName,
-  onInputKeyDown,
   onAddTask,
-}: TaskInputProps) {
+}: AddTaskProps) {
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onAddTask();
+    }
+  };
+
   return (
     <>
       <label htmlFor="task-input">Add Task: </label>

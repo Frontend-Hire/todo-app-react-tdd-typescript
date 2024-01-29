@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from './types';
-import TaskInput from './TaskInput';
+import AddTask from './AddTask';
 
 function App() {
   const [tasks, setTasks] = React.useState<Task[]>([]);
@@ -26,19 +26,12 @@ function App() {
     setTaskName('');
   };
 
-  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onAddTask();
-    }
-  };
-
   return (
     <div>
       <h1>Tasks</h1>
-      <TaskInput
+      <AddTask
         taskName={taskName}
         setTaskName={setTaskName}
-        onInputKeyDown={onInputKeyDown}
         onAddTask={onAddTask}
       />
       <ul>
