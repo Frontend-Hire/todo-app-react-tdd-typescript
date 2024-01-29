@@ -3,6 +3,8 @@ import { Task } from './types';
 import AddTask from './AddTask';
 
 function App() {
+  console.log('App rendered');
+
   const [tasks, setTasks] = React.useState<Task[]>([]);
 
   const [taskName, setTaskName] = React.useState('');
