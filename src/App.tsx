@@ -7,9 +7,7 @@ function App() {
 
   const [tasks, setTasks] = React.useState<Task[]>([]);
 
-  const [taskName, setTaskName] = React.useState('');
-
-  const onAddTask = () => {
+  const onAddTask = (taskName: string) => {
     const trimmedTaskName = taskName.trim();
 
     if (!trimmedTaskName) {
@@ -24,18 +22,12 @@ function App() {
         isCompleted: false,
       },
     ]);
-
-    setTaskName('');
   };
 
   return (
     <div>
       <h1>Tasks</h1>
-      <AddTask
-        taskName={taskName}
-        setTaskName={setTaskName}
-        onAddTask={onAddTask}
-      />
+      <AddTask onAddTask={onAddTask} />
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>{task.title}</li>
