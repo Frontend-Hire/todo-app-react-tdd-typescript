@@ -9,7 +9,7 @@ export default function TaskList({ tasks }: TaskListProps) {
   return (
     <ul>
       {tasks.map((task) => (
-        <TaskListItem key={task.id} title={task.title} />
+        <TaskListItem key={task.id}>{task.title}</TaskListItem>
       ))}
     </ul>
   );
