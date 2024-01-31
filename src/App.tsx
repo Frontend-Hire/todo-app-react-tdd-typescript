@@ -1,6 +1,7 @@
 import React from 'react';
 import { Task } from './types';
 import AddTask from './AddTask';
+import TaskList from './TaskList';
 
 function App() {
   const [tasks, setTasks] = React.useState<Task[]>([]);
@@ -20,11 +21,7 @@ function App() {
     <div>
       <h1>Tasks</h1>
       <AddTask onAddTask={onAddTask} />
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
-        ))}
-      </ul>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
