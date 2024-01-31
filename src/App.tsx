@@ -23,8 +23,7 @@ function App() {
     <div>
       <h1>Tasks</h1>
       <AddTask onAddTask={onAddTask} />
-      <TaskList>
-        <TaskListHeader count={tasks.length} />
+      <TaskList header={<TaskListHeader count={tasks.length} />}>
         {tasks.map((task) => (
           <TaskListItem key={task.id}>{task.title}</TaskListItem>
         ))}
