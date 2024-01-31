@@ -1,16 +1,3 @@
-import TaskListItem from './TaskListItem';
-import { Task } from './types';
-
-type TaskListProps = {
-  tasks: Task[];
-};
-
-export default function TaskList({ tasks }: TaskListProps) {
-  return (
-    <ul>
-      {tasks.map((task) => (
-        <TaskListItem key={task.id}>{task.title}</TaskListItem>
-      ))}
-    </ul>
-  );
+export default function TaskList({ children }: React.PropsWithChildren) {
+  return <ul>{children}</ul>;
 }
