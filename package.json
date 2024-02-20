@@ -11,7 +11,13 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "!**/*.{js,ts,jsx,tsx}": [
+      "prettier --write --ignore-unknown"
+    ]
   },
   "dependencies": {
     "react": "^18.2.0",
