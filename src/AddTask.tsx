@@ -7,7 +7,8 @@ type AddTaskProps = {
 export default function AddTask({ onAddTask }: AddTaskProps) {
   const [taskName, setTaskName] = React.useState('');
 
-  const handleAddTask = () => {
+  const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const trimmedTaskName = taskName.trim();
 
     if (!trimmedTaskName) {
@@ -18,22 +19,16 @@ export default function AddTask({ onAddTask }: AddTaskProps) {
     setTaskName('');
   };
 
-  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      handleAddTask();
-    }
-  };
-
   return (
-    <>
+    <form onSubmit={handleAddTask}>
       <label htmlFor="task-input">Add Task: </label>
       <input
+        required
         id="task-input"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
-        onKeyDown={onInputKeyDown}
       />
-      <button onClick={handleAddTask}>Add</button>
-    </>
+      <button>Add</button>
+    </form>
   );
 }
